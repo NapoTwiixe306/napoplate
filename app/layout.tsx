@@ -6,7 +6,7 @@ import {Providers} from "@/app/providers";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Templates Nextjs',
+  title: 'BoilerPlate - JMCorp/Boilerplate',
   description: 'Temaplte Nextjs made by NapoTwiixe',
 }
 
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" >
       <body className={inter.className}>
       <Providers>
         {children}

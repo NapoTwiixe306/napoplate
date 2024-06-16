@@ -1,26 +1,19 @@
+// page.tsx
 'use client'
-import React from 'react'
-import './globals.css'
-import Navbar from '@/src/Components/Navbar'
-import Footer from '@/src/Components/Footer'
-import Link from 'next/link'
-import {Button} from "@nextui-org/button";
+import React from 'react';
+import './globals.css';
+import Navbar from '@/src/Components/Navbar';
+import Footer from '@/src/Components/Footer';
 
-
-export default function page() {
-    function test() {
-        console.log("test")
-    }
+export default function Page() {
   return (
     <>
-      <Navbar/>
-      <div className="Home">
-        <h1 className="text-blue-600">Hello World</h1>
-        <Link href="/auth/signin">Signin</Link>
-        <Link href="/auth/register">Register</Link>
+      <div>
+        <div className="bg-white dark:bg-black">
+          <Navbar />
+          <h1 className="text-blue-500 dark:text-red-500">Hello World</h1>
+        </div>
       </div>
-        <Button>CVlick me</Button>
-      <Footer/>
     </>
-  )
+  );
 }
