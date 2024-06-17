@@ -1,4 +1,3 @@
-// navbar.tsx
 'use client'
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -26,13 +25,13 @@ const Navbar: React.FC = () => {
           <h1 className="text-2xl font-bold text-black dark:text-gray-100">JMCorp/Boilerplate</h1>
         </div>
         <div className="hidden space-x-6 md:flex">
-          <Link href="/pages/About">
+          <Link href="/pages/Docs">
             <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Docs</span>
           </Link>
           <Link href="/pages/service">
             <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Service</span>
           </Link>
-          <Link href="/pages/faq">
+          <Link href="/pages/Price">
             <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Price</span>
           </Link>
         </div>
@@ -62,13 +61,13 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="bg-gray-100 dark:bg-gray-900 md:hidden">
           <div className="flex flex-col items-start p-5 space-y-2">
-            <Link href="/pages/About">
+            <Link href="/pages/Docs">
               <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Docs</span>
             </Link>
             <Link href="/pages/service">
             <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Service</span>
             </Link>
-            <Link href="/pages/faq">
+            <Link href="/pages/Price">
               <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Price</span>
             </Link>
           </div>
