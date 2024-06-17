@@ -1,0 +1,6 @@
+<!-- public/stripes.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1247" height="768" viewBox="0 0 1247 768">
+  <line x1="0" y1="0" x2="1247" y2="768" stroke="gray" stroke-width="1"/>
+  <line x1="20" y1="0" x2="1267" y2="768" stroke="gray" stroke-width="1"/>
+  <!-- Ajoutez plus de lignes si nécessaire -->
+</svg>

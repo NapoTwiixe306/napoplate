@@ -27,10 +27,13 @@ const Navbar: React.FC = () => {
         </div>
         <div className="hidden space-x-6 md:flex">
           <Link href="/pages/About">
-            <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Documentation</span>
+            <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Docs</span>
+          </Link>
+          <Link href="/pages/service">
+            <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Service</span>
           </Link>
           <Link href="/pages/faq">
-            <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Figma</span>
+            <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Price</span>
           </Link>
         </div>
         <div className="items-center hidden space-x-4 md:flex">
@@ -60,10 +63,13 @@ const Navbar: React.FC = () => {
         <div className="bg-gray-100 dark:bg-gray-900 md:hidden">
           <div className="flex flex-col items-start p-5 space-y-2">
             <Link href="/pages/About">
-              <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Documentation</span>
+              <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Docs</span>
+            </Link>
+            <Link href="/pages/service">
+            <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Service</span>
             </Link>
             <Link href="/pages/faq">
-              <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Figma</span>
+              <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Price</span>
             </Link>
           </div>
           <div className="flex flex-col items-start p-5 space-y-2">
