@@ -15,7 +15,7 @@ export default function CardService() {
                 <div className="mb-4 text-4xl">{service.icon}</div>
                 <h3 className="mb-2 text-xl font-semibold text-black dark:text-white">{service.title}</h3>
               </div>
-              <p className='text-black  dark:text-white'>{service.description}</p>
+              <p className='text-black dark:text-white'>{service.description}</p>
             </div>
           ))}
         </div>

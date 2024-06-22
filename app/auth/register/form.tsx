@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import * as z from "zod";
 
 const FormSchema = z.object({
@@ -7,12 +7,26 @@ const FormSchema = z.object({
   password: z.string().min(8, "Password must have at least 8 characters"),
 });
 
-const updateState = (name: string, value: string, setValues: React.Dispatch<React.SetStateAction<{ email: string; password: string; }>>, setErrors: React.Dispatch<React.SetStateAction<{ email: string; password: string; }>>) => {
+const updateState = (
+  name: string,
+  value: string,
+  setValues: React.Dispatch<
+    React.SetStateAction<{ email: string; password: string }>
+  >,
+  setErrors: React.Dispatch<
+    React.SetStateAction<{ email: string; password: string }>
+  >
+) => {
   setValues((prevValues) => ({ ...prevValues, [name]: value }));
   setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
 };
 
-const handleErrors = (error: unknown, setErrors: React.Dispatch<React.SetStateAction<{ email: string; password: string; }>>) => {
+const handleErrors = (
+  error: unknown,
+  setErrors: React.Dispatch<
+    React.SetStateAction<{ email: string; password: string }>
+  >
+) => {
   if (error instanceof z.ZodError) {
     error.errors.forEach((err) => {
       setErrors((prevErrors) => ({
@@ -25,10 +39,14 @@ const handleErrors = (error: unknown, setErrors: React.Dispatch<React.SetStateAc
   }
 };
 
-
 const Form = () => {
   const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,21 +55,21 @@ const Form = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     try {
       // Valider les données du formulaire
       const validationResult = FormSchema.safeParse(values);
       if (!validationResult.success) {
         throw new Error(validationResult.error.errors[0].message);
       }
-  
+
       // Envoyer la requête au serveur
       const response = await fetch("/api/auth/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-  
+
       // Vérifier la réponse du serveur
       if (response.ok) {
         console.log("Compte créé avec succès !");
@@ -65,46 +83,78 @@ const Form = () => {
       // Gérer les erreurs de validation ou de requête
       handleErrors(error, setErrors);
     }
-  };  
-  
+  };
 
-  const emailInputClasses = ` ${errors.email && ""}`;
+  if (!isClient) {
+    return null; // Return null on the server
+  }
+
+  const emailInputClasses = `block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+    errors.email && "border-red-600 dark:border-red-400"
+  }`;
+
+  const passwordInputClasses = `block w-full px-3 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+    errors.password && "border-red-600 dark:border-red-400"
+  }`;
 
   return (
-    <form onSubmit={handleSubmit} className="">
-      <label>
-        <span className="">Email :</span>
-        <input
-          name="email"
-          className={emailInputClasses}
-          type="email"
-          placeholder="Entrez votre email..."
-          value={values.email}
-          onChange={handleChange}
-        />
-      </label>
-      {errors.email && <p className="">{errors.email}</p>}
-
-      <label>
-        <span className="">Mot de passe :</span>
-        <input
-          name="password"
-          className={` ${errors.password && ""}`}
-          type="password"
-          placeholder="Entrez votre mot de passe..."
-          value={values.password}
-          onChange={handleChange}
-        />
-      </label>
-      {errors.password && <p className="">{errors.password}</p>}
-
-      <button
-        type="submit"
-        className=""
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow dark:bg-gray-800"
       >
-        signup
-      </button>
-    </form>
+        <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
+          Sign Up
+        </h2>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+            Email:
+          </label>
+          <input
+            name="email"
+            className={emailInputClasses}
+            type="email"
+            placeholder="Entrez votre email..."
+            value={values.email}
+            onChange={handleChange}
+          />
+          {errors.email && (
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+              {errors.email}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+            Mot de passe:
+          </label>
+          <input
+            name="password"
+            className={passwordInputClasses}
+            type="password"
+            placeholder="Entrez votre mot de passe..."
+            value={values.password}
+            onChange={handleChange}
+          />
+          {errors.password && (
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+              {errors.password}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="w-full px-4 py-2 font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

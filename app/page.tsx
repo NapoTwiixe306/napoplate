@@ -40,7 +40,6 @@ export default function Page() {
             <CardService/>
           </section>
         </main>
-  
       </div>
     </>
   );
