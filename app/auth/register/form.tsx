@@ -1,6 +1,7 @@
 "use client";
 import React, { FormEvent, useState, useEffect } from "react";
 import * as z from "zod";
+import Link from "next/link"; // Import Link here
 
 const FormSchema = z.object({
   email: z.string().min(1, "Email is required").email("Invalid email"),
@@ -98,7 +99,7 @@ const Form = () => {
   }`;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow dark:bg-gray-800"
@@ -153,7 +154,14 @@ const Form = () => {
             Signup
           </button>
         </div>
+        <div className="mt-4 text-center text-gray-700 dark:text-gray-200">
+        <p>Already have an account?</p>
+        <Link href="/auth/signin" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+          Login to your account
+        </Link>
+      </div>
       </form>
+     
     </div>
   );
 };
