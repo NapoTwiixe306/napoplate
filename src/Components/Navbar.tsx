@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaSun, FaCat } from 'react-icons/fa';
+import { FaArrowRight, FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,45 +20,34 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-300 dark:bg-gray-900 dark:border-gray-700">
+    <nav className="p-5 bg-white dark:bg-gray-900">
       <div className="flex items-center justify-between w-full h-20 p-5 mx-auto">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-black dark:text-gray-100">JMCorp/Boilerplate</h1>
+          <h1 className="flex gap-2 space-x-2 text-2xl font-bold text-black dark:text-gray-100">
+            DSM
+          </h1>
         </div>
-        <div className="hidden space-x-6 md:flex">
+
+        <div className="items-center hidden space-x-6 md:flex">
           <ul className="flex space-x-6">
             <li>
               <Link href="/pages/Docs">
-                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Docs</span>
+                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Composants</span>
               </Link>
             </li>
             <li>
-              <Link href="/pages/service">
-                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Service</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/pages/Price">
-                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Price</span>
+              <Link href="pages/Dashboard">
+                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Dashboard</span>
               </Link>
             </li>
           </ul>
         </div>
-        <div className="items-center hidden space-x-4 md:flex">
-          <ul className="flex space-x-6">
-            <li>
-              <Link href="/auth/signin">
-                <span className="p-2 px-5 text-lg font-bold text-black border-2 rounded-full cursor-pointer dark:text-gray-100">Sign In</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/auth/register">
-                <span className="p-2 px-5 text-lg font-bold text-white bg-black rounded-full cursor-pointer dark:text-black dark:bg-white">Sign Up</span>
-              </Link>
-            </li>
-          </ul>
+        <div className="hidden gap-10 lg:flex">
+          <Link href="/auth/register">
+            <span className="flex items-center p-2 px-5 text-lg font-bold text-black rounded-md cursor-pointer bg-customBlue dark:text-black">Register <FaArrowRight className="w-4 h-4 ml-2 text-black dark:text-black"/></span>
+          </Link>
           <button onClick={toggleDarkMode}>
-            {darkMode ? <FaSun className="w-6 h-6 text-black dark:text-gray-100" /> : <FaCat className="w-6 h-6 text-black dark:text-gray-100" />}
+            {darkMode ? <FaSun className="w-6 h-6 text-black dark:text-gray-100" /> : <FaMoon className="w-6 h-6 text-black dark:text-gray-100" />}
           </button>
         </div>
         <div className="md:hidden">
@@ -83,33 +72,18 @@ const Navbar: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/pages/service">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Service</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/pages/Price">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Price</span>
+              <Link href="pages/Dashboard">
+                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Dashboard</span>
               </Link>
             </li>
           </ul>
           <ul className="flex flex-col items-start p-5 space-y-2">
             <li>
               <Link href="/auth/signin">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Sign In</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/auth/register">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Sign Up</span>
+                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Register</span>
               </Link>
             </li>
           </ul>
-          <div className="flex items-center justify-start p-5 space-x-4">
-            <button onClick={toggleDarkMode}>
-              {darkMode ? <FaSun className="w-6 h-6 text-black dark:text-gray-100" /> : <FaCat className="w-6 h-6 text-black dark:text-gray-100" />}
-            </button>
-          </div>
         </div>
       )}
     </nav>

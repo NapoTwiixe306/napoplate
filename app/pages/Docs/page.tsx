@@ -1,7 +1,13 @@
-import React from 'react'
+'use client'
 
-export default function page() {
+import { SessionProvider } from "next-auth/react"; 
+import DocsTest from "./DocsTest";
+const Dashboard = () => {
   return (
-    <div>page</div>
-  )
+    <SessionProvider>
+      <DocsTest />
+    </SessionProvider>
+  );
 }
+
+export default Dashboard;
