@@ -1,27 +1,25 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import {Providers} from "@/app/providers";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Providers } from "@/app/providers";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'BoilerPlate - JMCorp/Boilerplate',
-  description: 'Temaplte Nextjs made by NapoTwiixe',
-}
+  title: "BoilerPlate - JMCorp/Boilerplate",
+  description: "BoilerPlate Nextjs made by NapoTwiixe",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Providers>
-        {children}
-      </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
-  )
+  );
 }

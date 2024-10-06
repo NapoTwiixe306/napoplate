@@ -8,7 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-*{
+* {
   @apply transition-colors duration-200;
 }
 

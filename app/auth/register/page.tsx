@@ -6,7 +6,6 @@ export default function Page() {
     <div className="page-container">
       <div className="content-container">
         <Form />
-  
       </div>
     </div>
   );

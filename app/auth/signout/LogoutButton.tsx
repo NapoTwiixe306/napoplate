@@ -13,7 +13,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
     try {
       await signOut({
         callbackUrl: "/",
-        redirect: true
+        redirect: true,
       });
       alert("Vous êtes bien déconnecté");
     } catch (error) {

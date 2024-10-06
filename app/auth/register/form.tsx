@@ -16,7 +16,7 @@ const updateState = (
   >,
   setErrors: React.Dispatch<
     React.SetStateAction<{ email: string; password: string }>
-  >
+  >,
 ) => {
   setValues((prevValues) => ({ ...prevValues, [name]: value }));
   setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
@@ -26,7 +26,7 @@ const handleErrors = (
   error: unknown,
   setErrors: React.Dispatch<
     React.SetStateAction<{ email: string; password: string }>
-  >
+  >,
 ) => {
   if (error instanceof z.ZodError) {
     error.errors.forEach((err) => {
@@ -155,13 +155,15 @@ const Form = () => {
           </button>
         </div>
         <div className="mt-4 text-center text-gray-700 dark:text-gray-200">
-        <p>Already have an account?</p>
-        <Link href="/auth/signin" className="text-indigo-600 dark:text-indigo-400 hover:underline">
-          Login to your account
-        </Link>
-      </div>
+          <p>Already have an account?</p>
+          <Link
+            href="/auth/signin"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            Login to your account
+          </Link>
+        </div>
       </form>
-     
     </div>
   );
 };

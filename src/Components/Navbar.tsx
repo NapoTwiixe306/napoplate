@@ -1,7 +1,7 @@
-'use client'
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { FaArrowRight, FaSun, FaMoon } from 'react-icons/fa';
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { FaArrowRight, FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +9,9 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
 
@@ -31,23 +31,34 @@ const Navbar: React.FC = () => {
         <div className="items-center hidden space-x-6 md:flex">
           <ul className="flex space-x-6">
             <li>
-              <Link href="/pages/Docs">
-                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Composants</span>
+              <Link href="/pages/Price">
+                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">
+                  Price
+                </span>
               </Link>
             </li>
             <li>
               <Link href="pages/Dashboard">
-                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">Dashboard</span>
+                <span className="text-lg font-bold text-black cursor-pointer dark:text-gray-100">
+                  Dashboard
+                </span>
               </Link>
             </li>
           </ul>
         </div>
         <div className="hidden gap-10 lg:flex">
           <Link href="/auth/register">
-            <span className="flex items-center p-2 px-5 text-lg font-bold text-black rounded-md cursor-pointer bg-customBlue dark:text-black">Register <FaArrowRight className="w-4 h-4 ml-2 text-black dark:text-black"/></span>
+            <span className="flex items-center p-2 px-5 text-lg font-bold text-black rounded-md cursor-pointer bg-customBlue dark:text-black">
+              Register{" "}
+              <FaArrowRight className="w-4 h-4 ml-2 text-black dark:text-black" />
+            </span>
           </Link>
           <button onClick={toggleDarkMode}>
-            {darkMode ? <FaSun className="w-6 h-6 text-black dark:text-gray-100" /> : <FaMoon className="w-6 h-6 text-black dark:text-gray-100" />}
+            {darkMode ? (
+              <FaSun className="w-6 h-6 text-black dark:text-gray-100" />
+            ) : (
+              <FaMoon className="w-6 h-6 text-black dark:text-gray-100" />
+            )}
           </button>
         </div>
         <div className="md:hidden">
@@ -57,8 +68,19 @@ const Navbar: React.FC = () => {
             className="text-black dark:text-gray-100 focus:outline-none"
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
             </svg>
           </button>
         </div>
@@ -68,19 +90,34 @@ const Navbar: React.FC = () => {
           <ul className="flex flex-col items-start p-5 space-y-2">
             <li>
               <Link href="/pages/Docs">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Docs</span>
+                <span
+                  className="text-lg text-black cursor-pointer dark:text-gray-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Price
+                </span>
               </Link>
             </li>
             <li>
               <Link href="pages/Dashboard">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Dashboard</span>
+                <span
+                  className="text-lg text-black cursor-pointer dark:text-gray-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </span>
               </Link>
             </li>
           </ul>
           <ul className="flex flex-col items-start p-5 space-y-2">
             <li>
               <Link href="/auth/signin">
-                <span className="text-lg text-black cursor-pointer dark:text-gray-100" onClick={() => setIsOpen(false)}>Register</span>
+                <span
+                  className="text-lg text-black cursor-pointer dark:text-gray-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Register
+                </span>
               </Link>
             </li>
           </ul>
