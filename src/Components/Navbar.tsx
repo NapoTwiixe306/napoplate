@@ -20,11 +20,11 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900">
+    <nav className=" bg-white dark:bg-gray-900">
       <div className="flex items-center justify-between w-full h-20 p-5 mx-auto">
         <div className="flex items-center">
           <h1 className="flex gap-2 space-x-2 text-2xl font-bold text-black dark:text-gray-100">
-            TaskChain
+            DSM
           </h1>
         </div>
 
@@ -47,19 +47,14 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <div className="hidden gap-10 lg:flex">
-        <button onClick={toggleDarkMode}>
+          
+          <button onClick={toggleDarkMode}>
             {darkMode ? (
               <FaSun className="w-6 h-6 text-black dark:text-gray-100" />
             ) : (
               <FaMoon className="w-6 h-6 text-black dark:text-gray-100" />
             )}
           </button>
-          <Link href="/auth/register">
-            <span className="flex items-center p-2 px-5 text-lg font-bold text-white rounded-md cursor-pointer bg-black dark:bg-white dark:text-black">
-              Register{" "}
-              <FaArrowRight className="w-4 h-4 ml-2 text-white dark:text-black" />
-            </span>
-          </Link>
         </div>
         <div className="md:hidden">
           <button

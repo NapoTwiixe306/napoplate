@@ -18,6 +18,9 @@ dans le .env, mettez cette ligne (modifier vos acces a votre database ainsi que 
 
 ```bash
 DATABASE_URL="mysql://utilisateur:mot_de_passe@localhost:3306/nom_de_la_base_de_donnees?schema=public"
+NEXTAUTH_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXTAUTH_SECRET=
 ```
 
 faites les commandes dans cet ordre

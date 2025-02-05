@@ -4,7 +4,8 @@ import { services } from "./CardData";
 
 export default function CardService() {
   return (
-    <div className="flex items-center justify-center min-h-screen text-white ">
+    
+    {/* <div className="flex items-center justify-center min-h-screen text-white ">
       <div className="max-w-4xl px-4 py-12">
         <h2 className="mb-6 text-5xl font-bold text-center text-black dark:text-white">
           Why choose our service?
@@ -32,6 +33,7 @@ export default function CardService() {
           ))}
         </div>
       </div>
-    </div>
+    </div> */}
+    
   );
 }

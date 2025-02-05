@@ -1,11 +1,11 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
-import DocsTest from "./DocTest";
+import Dash from "./Dashboard";
 const Dashboard = () => {
   return (
     <SessionProvider>
-      <DocsTest />
+        <Dash/>
     </SessionProvider>
   );
 };
